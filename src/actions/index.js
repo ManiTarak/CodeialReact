@@ -1,1 +1,4 @@
 export const UPDATE_STATE_PL = "UPDATE_STATE_PL";
+export const LOGIN_STARTED = "LOGIN_STARTED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
