@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../App.css";
 import { fetchPosts } from "../actions/posts";
-import PostsList, { NavBar, Home, NotFound } from "./index.js";
+import PostsList, { NavBar, Home, NotFound, Login } from "./index.js";
 // function Home(props) {
 //   return (
 //     <div>
@@ -11,13 +11,13 @@ import PostsList, { NavBar, Home, NotFound } from "./index.js";
 //     </div>
 //   );
 // }
-function Login() {
-  return (
-    <div>
-      <h1>Login</h1>
-    </div>
-  );
-}
+// function Login() {
+//   return (
+//     <div>
+//       <h1>Login</h1>
+//     </div>
+//   );
+// }
 function SignUp() {
   return (
     <div>
