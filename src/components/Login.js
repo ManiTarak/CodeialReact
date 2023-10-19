@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { login } from "../actions/auth.js";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -9,8 +11,10 @@ class Login extends React.Component {
   }
   handleLoginBtnClick = (e) => {
     e.preventDefault();
-    console.log(this.state.email);
-    console.log(this.state.password);
+    if (this.state.email && this.state.password)
+      this.props.dispatch(login(this.state.email, this.state.password));
+    // console.log(this.state.email);
+    // console.log(this.state.password);
   };
   handleEmailInput = (e) => {
     this.setState({
@@ -24,9 +28,11 @@ class Login extends React.Component {
   };
 
   render() {
+    const { error, inProgress } = this.props.auth;
     return (
       <form className="login-form">
         <span className="login-signup-header">Log In</span>
+        {error && <div className="alert error-dailog">{error}</div>}
         <div className="field">
           <input
             type="email"
@@ -44,11 +50,21 @@ class Login extends React.Component {
           />
         </div>
         <div className="field">
-          <button onClick={this.handleLoginBtnClick}>Log In</button>
+          {inProgress ? (
+            <button className="Logging-btn" disabled={inProgress}>
+              Logging In
+            </button>
+          ) : (
+            <button onClick={this.handleLoginBtnClick}>Log In</button>
+          )}
         </div>
       </form>
     );
   }
 }
-
-export default Login;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+export default connect(mapStateToProps)(Login);
